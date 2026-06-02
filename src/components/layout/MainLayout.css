@@ -1,0 +1,43 @@
+/* MainLayout 스타일 */
+.main-layout {
+  display: flex;
+  flex-direction: column;
+  height: 100vh;
+  background:
+    linear-gradient(180deg, rgba(37, 99, 235, 0.05), rgba(248, 250, 252, 0) 240px),
+    var(--light-color);
+}
+
+.layout-header {
+  flex-shrink: 0;
+}
+
+.layout-body {
+  display: flex;
+  flex: 1;
+  min-height: 0;
+  overflow: hidden;
+}
+
+.layout-sidebar {
+  flex-shrink: 0;
+  width: var(--nav-width);
+  overflow-y: auto;
+}
+
+.layout-main {
+  flex: 1;
+  min-width: 0;
+  overflow-y: auto;
+  padding: var(--spacing-xl);
+}
+
+@media (max-width: 768px) {
+  .layout-sidebar {
+    display: none;
+  }
+
+  .layout-main {
+    padding: var(--spacing-md);
+  }
+}

@@ -1,0 +1,110 @@
+/* WorkerCard 스타일 */
+.worker-card {
+  background: var(--surface-color);
+  border: 1px solid var(--border-color);
+  border-left: 4px solid var(--border-strong);
+  border-radius: 8px;
+  padding: var(--spacing-lg);
+  box-shadow: var(--shadow-sm);
+  cursor: pointer;
+  transition: box-shadow var(--transition-normal), transform var(--transition-normal), border-color var(--transition-normal);
+}
+
+.worker-card:hover {
+  box-shadow: var(--shadow-md);
+  transform: translateY(-3px);
+}
+
+.worker-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-md);
+}
+
+.worker-header h3 {
+  margin: 0;
+  font-size: 1.08rem;
+  color: var(--dark-color);
+}
+
+.worker-id {
+  flex-shrink: 0;
+  font-size: 0.78rem;
+  color: var(--muted-color);
+  background-color: var(--light-color);
+  border: 1px solid var(--border-color);
+  padding: 4px 9px;
+  border-radius: 999px;
+  font-weight: 700;
+}
+
+.worker-status {
+  margin-bottom: var(--spacing-md);
+}
+
+.status-badge {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  color: white;
+  min-width: 58px;
+  min-height: 28px;
+  padding: 4px 12px;
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 800;
+}
+
+.worker-vitals {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.vital {
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+  padding: 12px;
+  background: var(--light-color);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+}
+
+.vital-label {
+  font-size: 0.78rem;
+  color: var(--muted-color);
+  font-weight: 700;
+}
+
+.vital-value {
+  font-weight: 800;
+  color: var(--dark-color);
+}
+
+.worker-equipment {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-md);
+  padding-bottom: var(--spacing-md);
+  border-bottom: 1px solid var(--border-color);
+}
+
+.equipment-item {
+  font-size: 0.82rem;
+  color: var(--muted-color);
+  padding: 6px 8px;
+  background: var(--light-color);
+  border-radius: 8px;
+}
+
+.worker-footer {
+  color: var(--muted-color);
+  font-size: 0.8rem;
+}
