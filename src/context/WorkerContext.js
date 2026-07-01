@@ -54,6 +54,150 @@ export const WorkerProvider = ({ children }) => {
           },
           lastUpdate: new Date(),
         },
+        {
+          id: 3,
+          name: '김민철',
+          workerId: 'W003',
+          location: { lat: 37.4977, lng: 127.0276 },
+          status: 'warning', // normal, warning, danger
+          sensorData: {
+            temperature: 37.0,
+            heartRate: 82,
+            equipmentStatus: {
+              helmet: true,
+              safeSuit: true,
+              safeShoes: true,
+              belt: false,
+            },
+          },
+          lastUpdate: new Date(),
+        },
+        {
+          id: 4,
+          name: '박수영',
+          workerId: 'W004',
+          location: { lat: 37.4979, lng: 127.0278 },
+          status: 'danger', // normal, warning, danger
+          sensorData: {
+            temperature: 37.7,
+            heartRate: 102,
+            equipmentStatus: {
+              helmet: true,
+              safeSuit: true,
+              safeShoes: true,
+              belt: true,
+            },
+          },
+          lastUpdate: new Date(),
+        },
+        {
+          id: 5,
+          name: '최연우',
+          workerId: 'W005',
+          location: { lat: 37.4980, lng: 127.0277 },
+          status: 'normal', // normal, warning, danger
+          sensorData: {
+            temperature: 36.8,
+            heartRate: 78,
+            equipmentStatus: {
+              helmet: true,
+              safeSuit: true,
+              safeShoes: true,
+              belt: true,
+            },
+          },
+          lastUpdate: new Date(),
+        },
+        {
+          id: 6,
+          name: '윤병호',
+          workerId: 'W006',
+          location: { lat: 37.4976, lng: 127.0278 },
+          status: 'warning', // normal, warning, danger
+          sensorData: {
+            temperature: 37.1,
+            heartRate: 81,
+            equipmentStatus: {
+              helmet: false,
+              safeSuit: true,
+              safeShoes: true,
+              belt: true,
+            },
+          },
+          lastUpdate: new Date(),
+        },
+        {
+          id: 7,
+          name: '한다솜',
+          workerId: 'W007',
+          location: { lat: 37.4978, lng: 127.0280 },
+          status: 'normal', // normal, warning, danger
+          sensorData: {
+            temperature: 36.3,
+            heartRate: 69,
+            equipmentStatus: {
+              helmet: true,
+              safeSuit: true,
+              safeShoes: true,
+              belt: true,
+            },
+          },
+          lastUpdate: new Date(),
+        },
+        {
+          id: 8,
+          name: '장태준',
+          workerId: 'W008',
+          location: { lat: 37.4976, lng: 127.0274 },
+          status: 'normal', // normal, warning, danger
+          sensorData: {
+            temperature: 37.1,
+            heartRate: 72,
+            equipmentStatus: {
+              helmet: true,
+              safeSuit: true,
+              safeShoes: true,
+              belt: true,
+            },
+          },
+          lastUpdate: new Date(),
+        },
+        {
+          id: 9,
+          name: '송재현',
+          workerId: 'W009',
+          location: { lat: 37.4978, lng: 127.0276 },
+          status: 'danger', // normal, warning, danger
+          sensorData: {
+            temperature: 35.9,
+            heartRate: 68,
+            equipmentStatus: {
+              helmet: false,
+              safeSuit: false,
+              safeShoes: true,
+              belt: false,
+            },
+          },
+          lastUpdate: new Date(),
+        },
+        {
+          id: 10,
+          name: '류나래',
+          workerId: 'W010',
+          location: { lat: 37.4977, lng: 127.0277 },
+          status: 'normal', // normal, warning, danger
+          sensorData: {
+            temperature: 36.6,
+            heartRate: 84,
+            equipmentStatus: {
+              helmet: true,
+              safeSuit: true,
+              safeShoes: true,
+              belt: true,
+            },
+          },
+          lastUpdate: new Date(),
+        },
       ];
       setWorkers(mockData);
       setError(null);
