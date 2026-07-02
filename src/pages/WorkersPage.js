@@ -7,9 +7,14 @@ import './WorkersPage.css';
  * 작업자 목록 및 상세 정보 관리
  */
 const WorkersPage = () => {
-  const { workers, fetchWorkers, selectedWorker, getWorkerDetail, loading } =
+  const { workers, fetchWorkers, selectedWorker, getWorkerDetail, loading, addWorker, updateWorker, deleteWorker } =
     useWorker();
   const [filter, setFilter] = useState('all'); // all, normal, warning, danger
+
+  // [추가] 모달 및 폼 상태 관리
+  const [isModalOpen, setIsModalOpen] = useState(false);
+  const [isEditing, setIsEditing] = useState(false);
+  const [formData, setFormData] = useState({ name: '', workerId: '' });
 
   useEffect(() => {
     fetchWorkers();
@@ -20,9 +25,63 @@ const WorkersPage = () => {
       ? workers
       : workers.filter((w) => w.status === filter);
 
+  // [추가] 모달 열기 (추가 모드)
+  const handleOpenAddModal = () => {
+    setIsEditing(false);
+    setFormData({ name: '', workerId: '' });
+    setIsModalOpen(true);
+  };
+
+  // [추가] 모달 열기 (수정 모드)
+  const handleOpenEditModal = () => {
+    if (selectedWorker) {
+      setIsEditing(true);
+      setFormData({ name: selectedWorker.name, workerId: selectedWorker.workerId });
+      setIsModalOpen(true);
+    }
+  };
+
+  // [추가] 폼 제출 처리 (추가/수정)
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    if (!formData.name || !formData.workerId) return alert('모든 정보를 입력해주세요.');
+
+    const isDuplicate = workers.some((worker) => {
+      if (isEditing && selectedWorker) {
+        return worker.workerId === formData.workerId && worker.id !== selectedWorker.id;
+      }
+      return worker.workerId === formData.workerId;
+    });
+    if (isDuplicate) {
+      alert('이미 존재하는 작업자 ID입니다. 다른 ID를 입력해주세요.');
+      return;
+    }
+
+    if (isEditing && selectedWorker) {
+      updateWorker(selectedWorker.id, formData);
+    } else {
+      addWorker(formData);
+    }
+    setIsModalOpen(false);
+  };
+  
+
+  // [추가] 삭제 처리
+  const handleDelete = () => {
+    if (selectedWorker && window.confirm(`${selectedWorker.name} 작업자를 삭제하시겠습니까?`)) {
+      deleteWorker(selectedWorker.id);
+    }
+  };
+
   return (
     <div className="workers-page">
-      <h1>작업자 관리</h1>
+      <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+        <h1>작업자 관리</h1>
+        {/* [추가] 작업자 추가 버튼 */}
+        <button className="add-btn" onClick={handleOpenAddModal} style={{ padding: '8px 16px', cursor: 'pointer' }}>
+          + 작업자 추가
+        </button>
+      </div>
 
       {/* 필터 */}
       <div className="filter-section">
@@ -82,7 +141,7 @@ const WorkersPage = () => {
           {selectedWorker && (
             <div className="worker-detail">
               <h3>{selectedWorker.name}</h3>
-
+                
               <div className="detail-section">
                 <h4>기본 정보</h4>
                 <p>작업자 ID: {selectedWorker.workerId}</p>
@@ -112,8 +171,50 @@ const WorkersPage = () => {
                   </li>
                 </ul>
               </div>
+              {/* [추가] 수정/삭제 버튼 */}
+                <div>
+                  <button onClick={handleOpenEditModal} className="update-btn" >수정</button>
+                  <button onClick={handleDelete} className="del-btn">삭제</button>
+                </div>
             </div>
           )}
+        </div>
+      )}
+      {/* [추가] 추가/수정 모달창 */}
+      {isModalOpen && (
+        <div className="modal-overlay" style={{
+          position: 'fixed', top: 0, left: 0, width: '100%', height: '100%',
+          backgroundColor: 'rgba(0,0,0,0.5)', display: 'flex', justifyContent: 'center', alignItems: 'center'
+        }}>
+          <div className="modal-content" style={{ backgroundColor: '#fff', padding: '20px', borderRadius: '8px', minWidth: '300px' }}>
+            <h2>{isEditing ? '작업자 수정' : '새 작업자 추가'}</h2>
+            <form onSubmit={handleSubmit}>
+              <div style={{ margin: '15px', display: 'flex', alignItems: 'center' }}>
+                <label>이름 &nbsp;</label>
+                <input 
+                  type="text"
+                  value={formData.name} 
+                  onChange={(e) => setFormData({...formData, name: e.target.value})} 
+                  required 
+                  style={{ flex: 1, padding: '8px'}}
+                />
+              </div>
+              <div style={{ margin: '15px', display: 'flex', alignItems: 'center' }}>
+                <label>작업자 ID &nbsp;</label>
+                <input 
+                  type="text" 
+                  value={formData.workerId} 
+                  onChange={(e) => setFormData({...formData, workerId: e.target.value})} 
+                  required 
+                  style={{ flex: 1, padding: '8px'}}
+                />
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'flex-end', gap: '10px' }}>
+                <button className='modal-btn' type="button" onClick={() => setIsModalOpen(false)}>취소</button>
+                <button className='modal-btn' type="submit">{isEditing ? '수정 완료' : '추가하기'}</button>
+              </div>
+            </form>
+          </div>
         </div>
       )}
     </div>
