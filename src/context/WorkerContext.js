@@ -198,6 +198,24 @@ export const WorkerProvider = ({ children }) => {
           },
           lastUpdate: new Date(),
         },
+        {
+          id: 11,
+          name: '다람쥐헌쳇바퀴에타고파다람쥐헌쳇바퀴에타고파다람쥐헌쳇바퀴에타고파',
+          workerId: 'W011',
+          location: { lat: 37.4978, lng: 127.0277 },
+          status: 'normal', // normal, warning, danger
+          sensorData: {
+            temperature: 37.1,
+            heartRate: 85,
+            equipmentStatus: {
+              helmet: true,
+              safeSuit: true,
+              safeShoes: true,
+              belt: true,
+            },
+          },
+          lastUpdate: new Date(),
+        },
       ];
       setWorkers(mockData);
       setError(null);
