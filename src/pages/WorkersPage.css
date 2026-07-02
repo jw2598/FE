@@ -212,3 +212,50 @@
     gap: var(--spacing-sm);
   }
 }
+
+.add-btn{
+  color: white;
+  cursor: pointer;
+  background-color: var(--primary-color);
+  border-radius: 50px;
+}
+.add-btn:hover{
+  background-color: var(--primary-dark);
+}
+.update-btn{
+  width: 100px;
+  color: var(--muted-color);
+  margin: 5px 10px 5px 0;
+  cursor: pointer;
+  border: 1px solid;
+  border-radius: 50px;
+}
+.update-btn:hover{
+  color: white;
+  background-color: var(--muted-color);
+  border: 1px solid var(--muted-color);
+}
+.del-btn{
+  width: 100px;
+  color: #F53030;
+  margin: 5px 10px 5px 0;
+  cursor: pointer;
+  background-color: white;
+  border: 1px solid;
+  border-radius: 50px;
+}
+.del-btn:hover{
+  color: white;
+  background-color: #F53030;
+  border: 1px solid #F53030;
+}
+
+.modal-btn{
+  color: var(--primary-color);
+  cursor: pointer;
+  background-color: white;
+  border-radius: 50px;
+}
+.modal-btn:hover{
+  background-color: var(--primary-soft);
+}

@@ -227,6 +227,43 @@ export const WorkerProvider = ({ children }) => {
     }
   }, []);
 
+  // [추가] 1. 작업자 추가
+  const addWorker = useCallback((workerData) => {
+    const newWorker = {
+      id: Date.now(), // 임시 ID 발급 (실제 연동 시 백엔드에서 생성)
+      ...workerData,
+      location: { lat: 37.4979, lng: 127.0276 }, // 기본 위치
+      status: 'normal',
+      sensorData: {
+        temperature: 36.5,
+        heartRate: 72,
+        equipmentStatus: { helmet: true, safeSuit: true, safeShoes: true, belt: true },
+      },
+      lastUpdate: new Date(),
+    };
+    setWorkers((prev) => [...prev, newWorker]);
+  }, []);
+
+  // [추가] 2. 작업자 수정
+  const updateWorker = useCallback((workerId, updatedData) => {
+    setWorkers((prev) =>
+      prev.map((worker) =>
+        worker.id === workerId ? { ...worker, ...updatedData, lastUpdate: new Date() } : worker
+      )
+    );
+    // 현재 선택된 작업자를 수정하는 경우, 선택된 상태도 업데이트
+    setSelectedWorker((prev) =>
+      prev?.id === workerId ? { ...prev, ...updatedData, lastUpdate: new Date() } : prev
+    );
+  }, []);
+
+  // [추가] 3. 작업자 삭제
+  const deleteWorker = useCallback((workerId) => {
+    setWorkers((prev) => prev.filter((worker) => worker.id !== workerId));
+    // 삭제한 작업자가 현재 선택된 작업자라면 선택 해제
+    setSelectedWorker((prev) => (prev?.id === workerId ? null : prev));
+  }, []);
+
   // 특정 작업자 상세 조회
   const getWorkerDetail = useCallback((workerId) => {
     const worker = workers.find((w) => w.id === workerId);
@@ -267,6 +304,10 @@ export const WorkerProvider = ({ children }) => {
     getWorkerDetail,
     updateWorkerStatus,
     updateSensorData,
+    
+    addWorker,
+    updateWorker,
+    deleteWorker,
   };
 
   return (
