@@ -30,7 +30,7 @@ const WorkersPage = () => {
   // [추가] 모달 열기 (추가 모드)
   const handleOpenAddModal = () => {
     setIsEditing(false);
-    setFormData({ name: '', workerId: '' });
+    setFormData({ name: '', workerId: 'W000', phone: '010', status: 'normal' });
     setIsModalOpen(true);
   };
 

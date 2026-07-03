@@ -44,7 +44,7 @@ export const WorkerProvider = ({ children }) => {
           workerId: 'W002',
           location: { lat: 37.4980, lng: 127.0277 },
           department: "안전관리팀",
-          phone: "010-1234-5678",
+          phone: "010-1234-5679",
           status: 'warning',
           sensorData: {
             temperature: 37.2,
@@ -64,7 +64,7 @@ export const WorkerProvider = ({ children }) => {
           workerId: 'W003',
           location: { lat: 37.4977, lng: 127.0276 },
           department: "안전관리팀",
-          phone: "010-1234-5678",
+          phone: "010-1234-5680",
           status: 'warning',
           sensorData: {
             temperature: 37.0,
@@ -84,7 +84,7 @@ export const WorkerProvider = ({ children }) => {
           workerId: 'W004',
           location: { lat: 37.4979, lng: 127.0278 },
           department: "안전관리팀",
-          phone: "010-1234-5678",
+          phone: "010-1234-5681",
           status: 'danger',
           sensorData: {
             temperature: 37.7,
@@ -104,7 +104,7 @@ export const WorkerProvider = ({ children }) => {
           workerId: 'W005',
           location: { lat: 37.4980, lng: 127.0277 },
           department: "안전관리팀",
-          phone: "010-1234-5678",
+          phone: "010-1234-5682",
           status: 'normal',
           sensorData: {
             temperature: 36.8,
@@ -124,7 +124,7 @@ export const WorkerProvider = ({ children }) => {
           workerId: 'W006',
           location: { lat: 37.4976, lng: 127.0278 },
           department: "안전관리팀",
-          phone: "010-1234-5678",
+          phone: "010-1234-5683",
           status: 'warning',
           sensorData: {
             temperature: 37.1,
@@ -144,7 +144,7 @@ export const WorkerProvider = ({ children }) => {
           workerId: 'W007',
           location: { lat: 37.4978, lng: 127.0280 },
           department: "안전관리팀",
-          phone: "010-1234-5678",
+          phone: "010-1234-5684",
           status: 'normal',
           sensorData: {
             temperature: 36.3,
@@ -164,7 +164,7 @@ export const WorkerProvider = ({ children }) => {
           workerId: 'W008',
           location: { lat: 37.4976, lng: 127.0274 },
           department: "안전관리팀",
-          phone: "010-1234-5678",
+          phone: "010-1234-5685",
           status: 'normal',
           sensorData: {
             temperature: 37.1,
@@ -184,7 +184,7 @@ export const WorkerProvider = ({ children }) => {
           workerId: 'W009',
           location: { lat: 37.4978, lng: 127.0276 },
           department: "안전관리팀",
-          phone: "010-1234-5678",
+          phone: "010-1234-5686",
           status: 'danger',
           sensorData: {
             temperature: 35.9,
@@ -204,7 +204,7 @@ export const WorkerProvider = ({ children }) => {
           workerId: 'W010',
           location: { lat: 37.4977, lng: 127.0277 },
           department: "안전관리팀",
-          phone: "010-1234-5678",
+          phone: "010-1234-5687",
           status: 'normal',
           sensorData: {
             temperature: 36.6,
@@ -224,7 +224,7 @@ export const WorkerProvider = ({ children }) => {
           workerId: 'W011',
           location: { lat: 37.4978, lng: 127.0277 },
           department: "안전관리팀",
-          phone: "010-1234-5678",
+          phone: "010-1234-5688",
           status: 'off-duty',
           sensorData: {
             temperature: 37.1,
