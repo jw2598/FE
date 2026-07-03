@@ -23,6 +23,8 @@ export const WorkerProvider = ({ children }) => {
           name: '김철수',
           workerId: 'W001',
           location: { lat: 37.4979, lng: 127.0276 },
+          department: "안전관리팀",
+          phone: "010-1234-5678",
           status: 'normal', // normal, warning, danger
           sensorData: {
             temperature: 36.5,
@@ -41,6 +43,8 @@ export const WorkerProvider = ({ children }) => {
           name: '이영희',
           workerId: 'W002',
           location: { lat: 37.4980, lng: 127.0277 },
+          department: "안전관리팀",
+          phone: "010-1234-5678",
           status: 'warning',
           sensorData: {
             temperature: 37.2,
@@ -59,7 +63,9 @@ export const WorkerProvider = ({ children }) => {
           name: '김민철',
           workerId: 'W003',
           location: { lat: 37.4977, lng: 127.0276 },
-          status: 'warning', // normal, warning, danger
+          department: "안전관리팀",
+          phone: "010-1234-5678",
+          status: 'warning',
           sensorData: {
             temperature: 37.0,
             heartRate: 82,
@@ -77,7 +83,9 @@ export const WorkerProvider = ({ children }) => {
           name: '박수영',
           workerId: 'W004',
           location: { lat: 37.4979, lng: 127.0278 },
-          status: 'danger', // normal, warning, danger
+          department: "안전관리팀",
+          phone: "010-1234-5678",
+          status: 'danger',
           sensorData: {
             temperature: 37.7,
             heartRate: 102,
@@ -95,7 +103,9 @@ export const WorkerProvider = ({ children }) => {
           name: '최연우',
           workerId: 'W005',
           location: { lat: 37.4980, lng: 127.0277 },
-          status: 'normal', // normal, warning, danger
+          department: "안전관리팀",
+          phone: "010-1234-5678",
+          status: 'normal',
           sensorData: {
             temperature: 36.8,
             heartRate: 78,
@@ -113,7 +123,9 @@ export const WorkerProvider = ({ children }) => {
           name: '윤병호',
           workerId: 'W006',
           location: { lat: 37.4976, lng: 127.0278 },
-          status: 'warning', // normal, warning, danger
+          department: "안전관리팀",
+          phone: "010-1234-5678",
+          status: 'warning',
           sensorData: {
             temperature: 37.1,
             heartRate: 81,
@@ -131,7 +143,9 @@ export const WorkerProvider = ({ children }) => {
           name: '한다솜',
           workerId: 'W007',
           location: { lat: 37.4978, lng: 127.0280 },
-          status: 'normal', // normal, warning, danger
+          department: "안전관리팀",
+          phone: "010-1234-5678",
+          status: 'normal',
           sensorData: {
             temperature: 36.3,
             heartRate: 69,
@@ -149,7 +163,9 @@ export const WorkerProvider = ({ children }) => {
           name: '장태준',
           workerId: 'W008',
           location: { lat: 37.4976, lng: 127.0274 },
-          status: 'normal', // normal, warning, danger
+          department: "안전관리팀",
+          phone: "010-1234-5678",
+          status: 'normal',
           sensorData: {
             temperature: 37.1,
             heartRate: 72,
@@ -167,7 +183,9 @@ export const WorkerProvider = ({ children }) => {
           name: '송재현',
           workerId: 'W009',
           location: { lat: 37.4978, lng: 127.0276 },
-          status: 'danger', // normal, warning, danger
+          department: "안전관리팀",
+          phone: "010-1234-5678",
+          status: 'danger',
           sensorData: {
             temperature: 35.9,
             heartRate: 68,
@@ -185,7 +203,9 @@ export const WorkerProvider = ({ children }) => {
           name: '류나래',
           workerId: 'W010',
           location: { lat: 37.4977, lng: 127.0277 },
-          status: 'normal', // normal, warning, danger
+          department: "안전관리팀",
+          phone: "010-1234-5678",
+          status: 'normal',
           sensorData: {
             temperature: 36.6,
             heartRate: 84,
@@ -203,7 +223,9 @@ export const WorkerProvider = ({ children }) => {
           name: '다람쥐헌쳇바퀴에타고파다람쥐헌쳇바퀴에타고파다람쥐헌쳇바퀴에타고파',
           workerId: 'W011',
           location: { lat: 37.4978, lng: 127.0277 },
-          status: 'off-duty', // normal, warning, danger
+          department: "안전관리팀",
+          phone: "010-1234-5678",
+          status: 'off-duty',
           sensorData: {
             temperature: 37.1,
             heartRate: 85,
@@ -233,6 +255,8 @@ export const WorkerProvider = ({ children }) => {
       id: Date.now(), // 임시 ID 발급 (실제 연동 시 백엔드에서 생성)
       ...workerData,
       location: { lat: 37.4979, lng: 127.0276 }, // 기본 위치
+      department: "안전관리팀",
+      phone: "010-1234-5678",
       status: 'normal',
       sensorData: {
         temperature: 36.5,

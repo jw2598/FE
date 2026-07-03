@@ -38,7 +38,7 @@ const WorkersPage = () => {
   const handleOpenEditModal = () => {
     if (selectedWorker) {
       setIsEditing(true);
-      setFormData({ name: selectedWorker.name, workerId: selectedWorker.workerId });
+      setFormData({ name: selectedWorker.name, workerId: selectedWorker.workerId, department: selectedWorker.department, phone: selectedWorker.phone, status: selectedWorker.status });
       setIsModalOpen(true);
     }
   };
@@ -165,30 +165,27 @@ const WorkersPage = () => {
               </button>
               <br/><br/>
               </div>
+
+              <div className="detail-section">
+                <h4>기본 정보</h4>
+                <p>작업자 ID: {selectedWorker.workerId}</p>
+                <p>부서: {selectedWorker.department}</p>
+                <p>연락처: {selectedWorker.phone}</p>
+              </div>
               
               {/* [수정] 퇴근 상태에 따른 조건부 렌더링 */}
               {selectedWorker.status === 'off-duty' ? (
                 // 퇴근 상태일 때 보여줄 화면
-                <div>
-                <div className="detail-section">
-                  <h4>기본 정보</h4>
-                  <p>작업자 ID: {selectedWorker.workerId}</p>
-                </div>
+
                 <div style={{ marginTop: '30px', padding: '40px 20px', textAlign: 'center', backgroundColor: '#f9f9f9', borderRadius: '8px', color: '#888' }}>
                   <h4 style={{ color: '#555' }}>퇴근한 작업자입니다.</h4>
                   <p>현재 위치, 생체 신호 및 안전장치 착용 여부 데이터 수집이 중지되었습니다.</p>
                 </div>
-                </div>
               ) : (
                 <div>
               <div className="detail-section">
-                <h4>기본 정보</h4>
-                <p>작업자 ID: {selectedWorker.workerId}</p>
-                <p>위치: 위도 {selectedWorker.location.lat}, 경도 {selectedWorker.location.lng}</p>
-              </div>
-
-              <div className="detail-section">
                 <h4>생체 신호</h4>
+                <p>위치: 위도 {selectedWorker.location.lat}, 경도 {selectedWorker.location.lng}</p>
                 <p>심박수: {selectedWorker.sensorData?.heartRate} bpm</p>
                 <p>체온: {selectedWorker.sensorData?.temperature}°C</p>
               </div>
@@ -247,6 +244,36 @@ const WorkersPage = () => {
                   type="text" 
                   value={formData.workerId} 
                   onChange={(e) => setFormData({...formData, workerId: e.target.value})} 
+                  required 
+                  style={{ flex: 1, padding: '8px'}}
+                />
+              </div>
+              <div style={{ margin: '15px', display: 'flex', alignItems: 'center' }}>
+                <label>소속 부서 &nbsp;</label>
+                <input 
+                  type="text" 
+                  value={formData.department} 
+                  onChange={(e) => setFormData({...formData, department: e.target.value})} 
+                  required 
+                  style={{ flex: 1, padding: '8px'}}
+                />
+              </div>
+              <div style={{ margin: '15px', display: 'flex', alignItems: 'center' }}>
+                <label>연락처 &nbsp;</label>
+                <input 
+                  type="text" 
+                  value={formData.phone} 
+                  onChange={(e) => setFormData({...formData, phone: e.target.value})} 
+                  required 
+                  style={{ flex: 1, padding: '8px'}}
+                />
+              </div>
+              <div style={{ margin: '15px', display: 'flex', alignItems: 'center' }}>
+                <label>상태 &nbsp;</label>
+                <input 
+                  type="text" 
+                  value={formData.status} 
+                  onChange={(e) => setFormData({...formData, status: e.target.value})} 
                   required 
                   style={{ flex: 1, padding: '8px'}}
                 />
