@@ -57,6 +57,10 @@
   background-color: var(--danger-color);
   border-color: var(--danger-color);
 }
+.filter-btn.off-duty.active{
+  background-color: var(--muted-color);
+  border-color: var(--muted-color);
+}
 
 .workers-container {
   display: grid;
@@ -131,6 +135,10 @@
 
 .worker-col-status.danger {
   background-color: var(--danger-color);
+}
+.worker-col-status.off-duty {
+  background-color: var(--muted-color);
+
 }
 
 .worker-col-time {

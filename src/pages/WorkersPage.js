@@ -9,7 +9,7 @@ import './WorkersPage.css';
 const WorkersPage = () => {
   const { workers, fetchWorkers, selectedWorker, getWorkerDetail, loading, addWorker, updateWorker, deleteWorker } =
     useWorker();
-  const [filter, setFilter] = useState('all'); // all, normal, warning, danger
+  const [filter, setFilter] = useState('all'); // all, active, normal, warning, danger, off-duty
 
   // [추가] 모달 및 폼 상태 관리
   const [isModalOpen, setIsModalOpen] = useState(false);
@@ -23,6 +23,8 @@ const WorkersPage = () => {
   const filteredWorkers =
     filter === 'all'
       ? workers
+      : filter === 'active'
+      ? workers.filter((w) => w.status !== 'off-duty')
       : workers.filter((w) => w.status === filter);
 
   // [추가] 모달 열기 (추가 모드)
@@ -92,6 +94,12 @@ const WorkersPage = () => {
           전체 ({workers.length})
         </button>
         <button
+          className={`filter-btn ${filter === 'active' ? 'active' : ''}`}
+          onClick={() => setFilter('active')}
+        >
+          근무 중 ({workers.filter((w) => w.status !== 'off-duty').length})
+        </button>
+        <button
           className={`filter-btn normal ${filter === 'normal' ? 'active' : ''}`}
           onClick={() => setFilter('normal')}
         >
@@ -108,6 +116,12 @@ const WorkersPage = () => {
           onClick={() => setFilter('danger')}
         >
           위험 ({workers.filter((w) => w.status === 'danger').length})
+        </button>
+        <button
+          className={`filter-btn off-duty ${filter === 'off-duty' ? 'active' : ''}`}
+          onClick={() => setFilter('off-duty')}
+        >
+          퇴근 ({workers.filter((w) => w.status === 'off-duty').length})
         </button>
       </div>
 
@@ -129,6 +143,7 @@ const WorkersPage = () => {
                   {worker.status === 'normal' && '정상'}
                   {worker.status === 'warning' && '주의'}
                   {worker.status === 'danger' && '위험'}
+                  {worker.status === 'off-duty' && '퇴근'}
                 </div>
                 <div className="worker-col-time">
                   {new Date(worker.lastUpdate).toLocaleTimeString()}
@@ -140,8 +155,32 @@ const WorkersPage = () => {
           {/* 상세 정보 패널 */}
           {selectedWorker && (
             <div className="worker-detail">
+              <div>
               <h3>{selectedWorker.name}</h3>
-                
+              {/* [추가] 상태 변경 버튼 (테스트용) */}
+              <button 
+                style={{color: 'var(--muted-color)', border: '1px solid', borderRadius: '50px'}}
+                onClick={() => updateWorker(selectedWorker.id, { status: selectedWorker.status === 'off-duty' ? 'normal' : 'off-duty' })}
+              >{selectedWorker.status === 'off-duty' ? '출근' : '퇴근'}
+              </button>
+              <br/><br/>
+              </div>
+              
+              {/* [수정] 퇴근 상태에 따른 조건부 렌더링 */}
+              {selectedWorker.status === 'off-duty' ? (
+                // 퇴근 상태일 때 보여줄 화면
+                <div>
+                <div className="detail-section">
+                  <h4>기본 정보</h4>
+                  <p>작업자 ID: {selectedWorker.workerId}</p>
+                </div>
+                <div style={{ marginTop: '30px', padding: '40px 20px', textAlign: 'center', backgroundColor: '#f9f9f9', borderRadius: '8px', color: '#888' }}>
+                  <h4 style={{ color: '#555' }}>퇴근한 작업자입니다.</h4>
+                  <p>현재 위치, 생체 신호 및 안전장치 착용 여부 데이터 수집이 중지되었습니다.</p>
+                </div>
+                </div>
+              ) : (
+                <div>
               <div className="detail-section">
                 <h4>기본 정보</h4>
                 <p>작업자 ID: {selectedWorker.workerId}</p>
@@ -171,8 +210,11 @@ const WorkersPage = () => {
                   </li>
                 </ul>
               </div>
+              </div>
+              )}
               {/* [추가] 수정/삭제 버튼 */}
                 <div>
+                  <br/>
                   <button onClick={handleOpenEditModal} className="update-btn" >수정</button>
                   <button onClick={handleDelete} className="del-btn">삭제</button>
                 </div>
