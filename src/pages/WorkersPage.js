@@ -59,6 +59,11 @@ const WorkersPage = () => {
       return;
     }
 
+    if(formData.status !== 'normal' && formData.status !== 'warning' && formData.status !== 'danger' && formData.status !== 'off-duty' ){
+      alert('올바른 상태를 입력하세요.\n정상: normal\n주의: warning\n위험: danger\n퇴근: off-duty');
+      return;
+    }
+
     if (isEditing && selectedWorker) {
       updateWorker(selectedWorker.id, formData);
     } else {
