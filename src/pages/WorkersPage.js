@@ -59,7 +59,7 @@ const WorkersPage = () => {
       return;
     }
 
-    if(formData.status !== 'normal' && formData.status !== 'warning' && formData.status !== 'danger' && formData.status !== 'off-duty' ){
+    if(formData.status !== 'normal' && formData.status !== 'warning' && formData.status !== 'danger' && formData.status !== 'off-duty'){
       alert('올바른 상태를 입력하세요.\n정상: normal\n주의: warning\n위험: danger\n퇴근: off-duty');
       return;
     }
@@ -166,7 +166,7 @@ const WorkersPage = () => {
               <button 
                 style={{color: 'var(--muted-color)', border: '1px solid', borderRadius: '50px'}}
                 onClick={() => updateWorker(selectedWorker.id, { status: selectedWorker.status === 'off-duty' ? 'normal' : 'off-duty' })}
-              >{selectedWorker.status === 'off-duty' ? '출근' : '퇴근'}
+              >{selectedWorker.status === 'off-duty' ? '출근하기' : '퇴근하기'}
               </button>
               <br/><br/>
               </div>
