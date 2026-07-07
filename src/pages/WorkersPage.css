@@ -57,7 +57,7 @@
   background-color: var(--danger-color);
   border-color: var(--danger-color);
 }
-.filter-btn.off-duty.active{
+.filter-btn.inactive.active{
   background-color: var(--muted-color);
   border-color: var(--muted-color);
 }
@@ -136,7 +136,7 @@
 .worker-col-status.danger {
   background-color: var(--danger-color);
 }
-.worker-col-status.off-duty {
+.worker-col-status.inactive {
   background-color: var(--muted-color);
 
 }

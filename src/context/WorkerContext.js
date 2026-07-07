@@ -225,7 +225,7 @@ export const WorkerProvider = ({ children }) => {
           location: { lat: 37.4978, lng: 127.0277 },
           department: "안전관리팀",
           phone: "010-1234-5688",
-          status: 'off-duty',
+          status: 'inactive',
           sensorData: {
             temperature: 37.1,
             heartRate: 85,
