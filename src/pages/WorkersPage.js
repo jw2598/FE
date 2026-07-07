@@ -30,7 +30,7 @@ const WorkersPage = () => {
   // [추가] 모달 열기 (추가 모드)
   const handleOpenAddModal = () => {
     setIsEditing(false);
-    setFormData({ name: '', workerId: 'W000', phone: '010', status: 'normal' });
+    setFormData({ name: '', workerId: 'W000', phoneNumber: '010', status: 'normal' });
     setIsModalOpen(true);
   };
 
@@ -38,7 +38,7 @@ const WorkersPage = () => {
   const handleOpenEditModal = () => {
     if (selectedWorker) {
       setIsEditing(true);
-      setFormData({ name: selectedWorker.name, workerId: selectedWorker.workerId, department: selectedWorker.department, phone: selectedWorker.phone, status: selectedWorker.status });
+      setFormData({ name: selectedWorker.name, workerId: selectedWorker.workerId, department: selectedWorker.department, phoneNumber: selectedWorker.phoneNumber, status: selectedWorker.status });
       setIsModalOpen(true);
     }
   };
@@ -175,7 +175,7 @@ const WorkersPage = () => {
                 <h4>기본 정보</h4>
                 <p>작업자 ID: {selectedWorker.workerId}</p>
                 <p>부서: {selectedWorker.department}</p>
-                <p>연락처: {selectedWorker.phone}</p>
+                <p>연락처: {selectedWorker.phoneNumber}</p>
               </div>
               
               {/* [수정] 퇴근 상태에 따른 조건부 렌더링 */}
@@ -267,8 +267,8 @@ const WorkersPage = () => {
                 <label>연락처 &nbsp;</label>
                 <input 
                   type="text" 
-                  value={formData.phone} 
-                  onChange={(e) => setFormData({...formData, phone: e.target.value})} 
+                  value={formData.phoneNumber} 
+                  onChange={(e) => setFormData({...formData, phoneNumber: e.target.value})} 
                   required 
                   style={{ flex: 1, padding: '8px'}}
                 />
